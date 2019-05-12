@@ -1,0 +1,45 @@
+//spring核心文件 ApplicationContext.xml
+//使用<bean> <property> <value>配置bean
+//获得ApplicationContext.xml中bean有四种方法：ClassPathXmlApplicationContext,bean工厂(XmlBeanFactory),web/file system
+//如果是singleton，则ClassPathXmlApplicationContext会立刻在加载bean的时候将其实例化
+
+// bean's life span
+//1.实例化
+//2.设置属性 property，value
+//3-5.setBeanName, setBeanFactory, setApplicationContext得到bean名，bean工厂，应用上下文
+//6.如果bean与postprocessor关联，调用beforeinitialization
+//7.调用initialbean的afterpropertiesset方法
+//8.调用定制的初始方法 （ini-method）
+//9.postprocessor的afterinitialization方法
+//10.bean使用，关闭IOC container，，destroy bean 
+
+
+
+
+//hibernate
+// orm framework
+// interface: session factory, session, trasaction
+//JPA (java persistence Api)，描述对relational data的管理，通过@注解
+//各种@注解
+
+@Entity                  // means table name = class name
+@Table(name="cart")      // to change the above rule
+@OneToOne(mappedBy="billingAddress")
+private Customer customer                    // 顾客与账单地址一对一
+@JsonIgnore                                    // 返回的json数据不包含此属性
+@OneToMany                  // 一对多
+@JoinColumn                  //保存用来描述表间关系的字段 ，例如customer中的shippingaddressid, user_id
+@NotEmpty  @NotNull(message="")   // 不能为空或者null
+@Transient                     //  this column / field is not persistent
+
+
+// Spring MVC
+// five components   dispatcherServlet + handlerMapping + controller + ModelAndView + ViewResolver
+@controller                     // define a controller
+@RequestMapping               // 映射请求路径， 将url请求与controller匹配
+@RequestParam()                // 存储httprequest中的参数值
+@RequestBody                  // http body 被deserialized成java object
+@PathVariable                  // 绑定URL的参数值到方法参数上
+@ModelAttribute                // 映射到Model中， in client ,==>  **pet.name**
+
+//spring mvc return type   ===>   MODELANDVIEW , VOID , STRING, @ResponseBody
