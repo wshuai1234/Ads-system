@@ -17,6 +17,7 @@
 //9.postprocessor的afterinitialization方法
 //10.bean使用，关闭IOC container，，destroy bean 
 
+// @component can be used in any layer, @repository used in DAO layer, @CController used in web/controller layer.
 
 
 
