@@ -2,6 +2,7 @@
 //使用<bean> <property> <value>配置bean
 //获得ApplicationContext.xml中bean有四种方法：ClassPathXmlApplicationContext,bean工厂(XmlBeanFactory),web/file system
 //如果是singleton，则ClassPathXmlApplicationContext会立刻在加载bean的时候将其实例化
+@Autowired autowired来完成变量的自动装配的工作
 
 // bean's life span
 //1.实例化
