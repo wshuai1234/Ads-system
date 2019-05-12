@@ -5,6 +5,7 @@
 @Autowired autowired来完成变量的自动装配的工作
 // web层==》service 层==》 DAO（data access object层）负责对数据库的CRUD==》hibernate==》DB
 //controller  通过autowired装配service， service通过autowired装配DAO ， DAO通过autowired装配sessionfactory
+//@repository标记persistence持久层
 
 // bean's life span
 //1.实例化
