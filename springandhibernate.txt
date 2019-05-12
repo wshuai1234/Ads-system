@@ -47,3 +47,27 @@ private Customer customer                    // 顾客与账单地址一对一
 @ModelAttribute                // 映射到Model中， in client ,==>  **pet.name**
 
 //spring mvc return type   ===>   MODELANDVIEW , VOID , STRING, @ResponseBody
+
+
+// spring web flow
+//flowhandlermapping & flowhandleradapter 负责引入web flow和answer the call
+//flow由四部分组成： state， action， subflow, end
+// state邀请用户参与， action负责flow逻辑， subflow ==》 end
+//define a view state :  
+<view-state id="welcome" view="greeting.jsp" model=”xxx” />
+
+//define an action state:
+<action-state id="addCartToOrder">
+    <evaluate expression="cartDaoImpl.validate(requestParameters.cartId)" result="order.cart" />
+    <transition to="invalidCartWarning" on-exception="java.io.IOException" />
+    <transition to="collectCustomerInfo" />
+</action-state>
+
+//define a subflow:
+<subflow-state id="order" subflow="pizza/order">
+    <input name="order" value="order"/>
+    <transition on="orderCreated" to="payment" />
+</subflow-state>
+
+// define end:
+ <end-state id=”endState" />
